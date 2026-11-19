@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>نور – الصلاة والقرآن والأذكار</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;800&display=swap">
+<style>
+:root{--bg:#eef3f1;--sf:#fff;--tx:#12302c;--mu:#5d7570;--pr:#12403a;--on:#fff;--ac:#b7893b;--ln:#d3dfdb;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c1a18;--sf:#142824;--tx:#e6efec;--mu:#8fa8a2;--pr:#2c7d72;--on:#fff;--ac:#d9a950;--ln:#243d38}}
+:root[data-theme="dark"]{--bg:#0c1a18;--sf:#142824;--tx:#e6efec;--mu:#8fa8a2;--pr:#2c7d72;--on:#fff;--ac:#d9a950;--ln:#243d38}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Cairo,system-ui,sans-serif;line-height:1.7;padding-bottom:84px}
+main{max-width:640px;margin:0 auto;padding:16px}
+section{display:none}section.on{display:block}
+h2{font-size:1.15rem;margin:18px 0 8px}
+.hero{background:var(--pr);color:var(--on);border-radius:20px;padding:22px;text-align:center}
+.hero small{opacity:.8}
+.hero .big{font-size:3rem;font-weight:800;line-height:1.2;font-variant-numeric:tabular-nums}
+.hero .nm{font-size:1.4rem;font-family:Amiri,serif}
+.row{display:flex;justify-content:space-between;align-items:center;padding:12px 4px;border-bottom:1px solid var(--ln)}
+.row.nx{color:var(--ac);font-weight:800}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:14px;margin:10px 0}
+button,select,input{font:inherit;color:var(--tx)}
+button{cursor:pointer}
+.btn{background:var(--pr);color:var(--on);border:0;border-radius:12px;padding:10px 16px}
+.btn.o{background:none;color:var(--tx);border:1px solid var(--ln)}
+:focus-visible{outline:3px solid var(--ac);outline-offset:2px}
+select,input[type=search]{background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:8px 10px;width:100%}
+nav{position:fixed;bottom:0;left:0;right:0;background:var(--sf);border-top:1px solid var(--ln);display:flex;padding-bottom:env(safe-area-inset-bottom,0px);z-index:5}
+nav button{flex:1;background:none;border:0;padding:10px 2px;font-size:.78rem;color:var(--mu)}
+nav button.on{color:var(--pr);font-weight:800;box-shadow:inset 0 3px var(--ac)}
+nav span{display:block;font-size:1.25rem}
+.q{font-family:Amiri,serif;font-size:1.7rem;line-height:2.3;text-align:center}
+.q i{font-style:normal;color:var(--ac);font-size:1.1rem;margin:0 4px}
+.az{font-family:Amiri,serif;font-size:1.35rem;line-height:2.1}
+.cnt{display:flex;justify-content:space-between;align-items:center;margin-top:6px;color:var(--mu);font-size:.9rem}
+.cnt button{min-width:70px}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+.tabs button{white-space:nowrap;border:1px solid var(--ln);background:var(--sf);border-radius:20px;padding:6px 14px}
+.tabs button.on{background:var(--pr);color:var(--on);border-color:var(--pr)}
+.sl{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.sl a,.sl button{display:flex;justify-content:space-between;background:var(--sf);border:1px solid var(--ln);border-radius:12px;padding:10px 12px;color:var(--tx);text-decoration:none;text-align:right}
+.sl em{font-style:normal;color:var(--mu);font-size:.8rem}
+#comp{width:240px;height:240px;margin:16px auto;border-radius:50%;border:6px solid var(--pr);position:relative;background:var(--sf)}
+#arr{position:absolute;inset:0;transition:transform .3s}
+#arr:before{content:"";position:absolute;top:14px;left:50%;margin-left:-12px;border:12px solid transparent;border-bottom:70px solid var(--ac);border-top:0}
+#arr:after{content:"🕋";position:absolute;top:-6px;left:50%;margin-left:-14px;font-size:1.7rem}
+.lbl{display:flex;justify-content:space-between;align-items:center;padding:10px 0}
+#toast{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));left:12px;right:12px;max-width:600px;margin:auto;background:var(--pr);color:var(--on);padding:14px;border-radius:14px;text-align:center;z-index:9;display:none;font-family:Amiri,serif;font-size:1.2rem}
+</style>
+<style>.q a{color:var(--ac);font-size:1.1rem;text-decoration:none}.src{color:var(--mu);font-size:.85rem;font-family:Cairo,sans-serif;line-height:1.6;margin-top:6px}</style>
+<script type="module">
+try{const m=await import("https://cdn.jsdelivr.net/npm/@muslims-community/quran@1.1.0/+esm");window.QM=(m&&m.getSurah?m:(m&&m.default))||null}catch(e){window.QERR=String(e)}
+if(!window.QM||typeof window.QM.getSurah!=="function")window.QERR=window.QERR||"nofn";
+window.dispatchEvent(new Event("quran-ready"));
+</script>
+</head>
+<body>
+<div id="toast" role="alert"></div>
+<main>
+<section id="v-pray" class="on">
+ <div class="hero"><small id="city">…</small><div class="nm" id="nxn">الصلاة القادمة</div><div class="big" id="cd">--:--:--</div><small id="dt"></small></div>
+ <div id="list"></div>
+ <div class="card"><div class="lbl"><span>الدولة</span><select id="cty" style="width:60%"></select></div><div class="lbl"><span>المدينة</span><select id="cit" style="width:60%"></select></div><button class="btn" id="loc">📍 حدد موقعي بالـ GPS</button> <small id="gps" style="color:var(--mu)"></small><div id="man" style="display:none;margin-top:8px"><small>أدخل الإحداثيات يدويًا:</small><div style="display:flex;gap:6px;margin-top:4px"><input id="mla" placeholder="خط العرض 30.04" inputmode="decimal" style="width:100%;padding:8px;border:1px solid var(--ln);border-radius:10px;background:var(--sf)"><input id="mlo" placeholder="خط الطول 31.24" inputmode="decimal" style="width:100%;padding:8px;border:1px solid var(--ln);border-radius:10px;background:var(--sf)"><button class="btn" id="mok">تم</button></div></div><p style="color:var(--mu);font-size:.8rem;margin:8px 0 0">طريقة الحساب تتغير حسب الدولة. مع الـ GPS تُحسب الطريقة من أقرب مدينة في القائمة.</p></div>
+</section>
+<section id="v-qibla">
+ <h2>اتجاه القبلة</h2>
+ <div id="comp"><div id="arr"></div></div>
+ <p style="text-align:center" id="qtx"></p>
+ <p style="text-align:center"><button class="btn" id="cmp">📍 حدد موقعي وشغّل البوصلة</button></p><p id="hd" style="text-align:center;font-weight:800"></p>
+ <p style="text-align:center;color:var(--mu);font-size:.85rem">اضبط الهاتف أفقيًا. زاوية القبلة تُحسب من موقعك، والبوصلة تحتاج جهازًا به مستشعر اتجاه.</p>
+</section>
+<section id="v-adhkar">
+ <h2>الأذكار</h2>
+ <div class="tabs" id="atabs"></div>
+ <div id="alist"></div>
+</section>
+<section id="v-quran">
+ <h2>المصحف</h2>
+ <input type="search" id="qs" placeholder="ابحث عن سورة">
+ <div id="qread"></div>
+ <div class="sl" id="slist"></div>
+</section>
+<section id="v-hadith"><h2>من الأربعين النووية</h2><div id="hl"></div></section>
+<section id="v-set">
+ <h2>التنبيهات</h2>
+ <div class="card">
+  <div class="lbl"><span>تنبيه عند كل صلاة</span><input type="checkbox" id="sAd"></div>
+  <div class="lbl"><span>صوت مع التنبيه</span><input type="checkbox" id="sSnd"></div>
+  <div class="lbl"><span>تذكير بالصلاة على النبي ﷺ</span>
+   <select id="sSal" style="width:auto"><option value="0">إيقاف</option><option value="5">كل 5 دقائق</option><option value="10">كل 10 دقائق</option><option value="15">كل 15 دقيقة</option><option value="30">كل 30 دقيقة</option><option value="60">كل ساعة</option><option value="120">كل ساعتين</option></select></div>
+  <div class="lbl"><span>مدة مخصصة بالدقائق</span><input type="number" id="sCus" min="1" max="1440" style="width:90px;background:var(--sf);border:1px solid var(--ln);border-radius:10px;padding:6px"></div>
+  <p><button class="btn" id="perm">السماح بإشعارات المتصفح</button> <button class="btn o" id="tst">تجربة تنبيه</button></p>
+ </div>
+ <p style="color:var(--mu);font-size:.9rem">على الهاتف: التنبيه (صوت واهتزاز وإشعار) يعمل والصفحة مفتوحة، وقد يوقفه الهاتف عند قفل الشاشة. الموقع لا يستطيع إرسال إشعار وهو مغلق تمامًا. لو عايز تذكير يوصلك والمتصفح مقفول، اطلب مني في المحادثة وأعمل لك منبهات في ساعة هاتفك.</p>
+</section>
+</main>
+<nav>
+ <button data-v="pray" class="on"><span>🕌</span>الصلاة</button>
+ <button data-v="quran"><span>📖</span>المصحف</button>
+ <button data-v="adhkar"><span>📿</span>الأذكار</button>
+ <button data-v="qibla"><span>🧭</span>القبلة</button>
+ <button data-v="hadith"><span>📜</span>الحديث</button>
+ <button data-v="set"><span>🔔</span>التنبيهات</button>
+</nav>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+let S={lat:30.0444,lng:31.2357,city:"مصر – القاهرة",co:"مصر",ci:"القاهرة",tz:"Africa/Cairo",f:19.5,i:17.5,im:0,ad:true,snd:true,sal:0};
+try{Object.assign(S,JSON.parse(localStorage.getItem("noor")||"{}"))}catch(e){}
+const save=()=>{try{localStorage.setItem("noor",JSON.stringify(S))}catch(e){}};
+const rad=Math.PI/180,sin=x=>Math.sin(x*rad),cos=x=>Math.cos(x*rad);
+function tzo(t){try{const p=Object.fromEntries(new Intl.DateTimeFormat("en-US",{timeZone:S.tz,hourCycle:"h23",year:"numeric",month:"numeric",day:"numeric",hour:"numeric",minute:"numeric",second:"numeric"}).formatToParts(new Date(t)).map(x=>[x.type,+x.value]));return(Date.UTC(p.year,p.month-1,p.day,p.hour,p.minute,p.second)-Math.floor(t/1e3)*1e3)/36e5}catch(e){return-new Date(t).getTimezoneOffset()/60}}
+function calc(t){const o=tzo(t),L0=new Date(t+o*36e5),Y=L0.getUTCFullYear(),M0=L0.getUTCMonth(),D0=L0.getUTCDate();
+ const d=(Date.UTC(Y,M0,D0,12)-Date.UTC(2000,0,1,12))/864e5;
+ const g=(357.529+.98560028*d)%360,q=(280.459+.98564736*d)%360,L=q+1.915*sin(g)+.02*sin(2*g),e=23.439-4e-7*d;
+ const ra=((Math.atan2(cos(e)*sin(L),cos(L))/rad)%360+360)%360/15,dec=Math.asin(sin(e)*sin(L))/rad;
+ let eq=q/15-ra;eq=((eq+12)%24+24)%24-12;
+ const tz=o,noon=12+tz-S.lng/15-eq+1/60;
+ const T=a=>Math.acos((sin(a)-sin(dec)*sin(S.lat))/(cos(dec)*cos(S.lat)))/rad/15;
+ const asr=Math.atan(1/(1+Math.tan(Math.abs(S.lat-dec)*rad)))/rad;
+ const m=Date.UTC(Y,M0,D0)-o*36e5;
+ const at=h=>isNaN(h)?null:new Date(m+h*36e5);
+ return[["الفجر",at(noon-T(-S.f)),1],["الشروق",at(noon-T(-.833)),0],["الظهر",at(noon),1],["العصر",at(noon+T(asr)),1],["المغرب",at(noon+T(-.833)),1],["العشاء",at(S.im?noon+T(-.833)+S.im/60:noon+T(-S.i)),1]];
+}
+const fm=d=>d?d.toLocaleTimeString("ar-EG",{hour:"numeric",minute:"2-digit",timeZone:S.tz}):"—";
+let today,nextP;
+function render(){
+ const n=new Date();today=calc(n.getTime());
+ $("#city").textContent=S.city;$("#dt").textContent=n.toLocaleDateString("ar-EG",{weekday:"long",day:"numeric",month:"long",year:"numeric",timeZone:S.tz});
+ let nx=today.find(p=>p[2]&&p[1]&&p[1]>n);
+ if(!nx){nx=calc(n.getTime()+864e5)[0]}
+ nextP=nx;
+ $("#list").innerHTML=today.map(p=>`<div class="row${p===today.find(x=>x===nx)?" nx":""}"><span>${p[0]}</span><span>${fm(p[1])}</span></div>`).join("");
+ $("#nxn").textContent="الصلاة القادمة: "+nx[0];
+}
+function tick(){
+ const n=new Date();if(!nextP||!nextP[1])return;
+ let s=Math.floor((nextP[1]-n)/1e3);if(s<0){render();return}
+ const h=Math.floor(s/3600),m=Math.floor(s%3600/60);
+ $("#cd").textContent=[h,m,s%60].map(x=>String(x).padStart(2,"0")).join(":");
+}
+function beep(){if(!S.snd)return;try{const c=new(window.AudioContext||window.webkitAudioContext)(),o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);o.frequency.value=660;g.gain.setValueAtTime(.2,c.currentTime);g.gain.exponentialRampToValueAtTime(.001,c.currentTime+1.2);o.start();o.stop(c.currentTime+1.2)}catch(e){}}
+function notify(title,body){
+ const t=$("#toast");t.textContent=title+" — "+body;t.style.display="block";setTimeout(()=>t.style.display="none",8000);beep();
+ try{if("Notification"in window&&Notification.permission==="granted")new Notification(title,{body})}catch(e){}
+}
+const fired={};let lastSal=Date.now();
+setInterval(()=>{
+ tick();const n=Date.now();
+ if(S.ad&&today)today.forEach(p=>{if(p[2]&&p[1]){const k=p[0]+new Date().toDateString();const df=n-p[1];if(df>=0&&df<6e4&&!fired[k]){fired[k]=1;notify("حان الآن موعد صلاة "+p[0],"حيّ على الصلاة")}}});
+ if(S.sal>0&&n-lastSal>=S.sal*6e4){lastSal=n;notify("صلِّ على النبي ﷺ","اللهم صلِّ وسلِّم وبارك على سيدنا محمد")}
+},1000);
+function locate(){
+ if(!navigator.geolocation){alert("المتصفح لا يدعم تحديد الموقع");return}
+ navigator.geolocation.getCurrentPosition(p=>{S.lat=p.coords.latitude;S.lng=p.coords.longitude;S.city="موقعك الحالي ("+S.lat.toFixed(2)+"، "+S.lng.toFixed(2)+")";save();render();qib()},()=>alert("تعذّر تحديد الموقع. اسمح للمتصفح بالوصول للموقع."),{timeout:10000});
+}
+$("#loc").onclick=locate;
+function qibla(){const dl=(39.8262-S.lng),a=Math.atan2(sin(dl)*cos(21.4225),cos(S.lat)*sin(21.4225)-sin(S.lat)*cos(21.4225)*cos(dl))/rad;return(a+360)%360}
+let heading=0;
+function qib(){const q=qibla();$("#qtx").textContent="القبلة "+Math.round(q)+"° من الشمال الحقيقي";$("#arr").style.transform=`rotate(${q-heading}deg)`}
+$("#cmp").onclick=async()=>{
+ try{if(window.DeviceOrientationEvent&&DeviceOrientationEvent.requestPermission){if(await DeviceOrientationEvent.requestPermission()!=="granted")return}}catch(e){}
+ const h=e=>{const v=e.webkitCompassHeading!=null?e.webkitCompassHeading:(e.alpha!=null?360-e.alpha:null);if(v!=null){heading=v;qib()}};
+ window.addEventListener("deviceorientationabsolute",h,true);window.addEventListener("deviceorientation",h,true);
+};
+const AZ={
+"الصباح":[["أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ",1],["رَضِيتُ بِاللَّهِ رَبًّا، وَبِالْإِسْلَامِ دِينًا، وَبِمُحَمَّدٍ ﷺ نَبِيًّا",3],["بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",3],["سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",100],["قراءة سورة الإخلاص والفلق والناس",3]],
+"المساء":[["أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ",1],["أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",3],["رَضِيتُ بِاللَّهِ رَبًّا، وَبِالْإِسْلَامِ دِينًا، وَبِمُحَمَّدٍ ﷺ نَبِيًّا",3],["سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",100],["قراءة سورة الإخلاص والفلق والناس",3]],
+"بعد الصلاة":[["أَسْتَغْفِرُ اللَّهَ",3],["اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ، تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ",1],["سُبْحَانَ اللَّهِ",33],["الْحَمْدُ لِلَّهِ",33],["اللَّهُ أَكْبَرُ",33],["لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",1]],
+"النوم":[["بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",1],["سُبْحَانَ اللَّهِ",33],["الْحَمْدُ لِلَّهِ",33],["اللَّهُ أَكْبَرُ",34],["قراءة آية الكرسي وسور الإخلاص والفلق والناس",1]],
+"الصلاة على النبي":[["اللَّهُمَّ صَلِّ وَسَلِّمْ وَبَارِكْ عَلَى سَيِّدِنَا مُحَمَّدٍ",10],["اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ إِنَّكَ حَمِيدٌ مَجِيدٌ",1]]
+};
+let cat="الصباح";
+function adhkar(){
+ $("#atabs").innerHTML=Object.keys(AZ).map(k=>`<button class="${k===cat?"on":""}" data-c="${k}">${k}</button>`).join("");
+ $$("#atabs button").forEach(b=>b.onclick=()=>{cat=b.dataset.c;adhkar()});
+ $("#alist").innerHTML=AZ[cat].map((z,i)=>`<div class="card"><div class="az">${z[0]}</div><div class="cnt"><span>التكرار: ${z[1]}</span><button class="btn" data-n="${z[1]}">${z[1]}</button></div></div>`).join("");
+ $$("#alist .btn").forEach(b=>b.onclick=()=>{let n=+b.textContent;if(n>0){n--;b.textContent=n;if(!n){b.textContent="✓";b.disabled=true}}});
+}
+const SU="الفاتحة7,البقرة286,آل عمران200,النساء176,المائدة120,الأنعام165,الأعراف206,الأنفال75,التوبة129,يونس109,هود123,يوسف111,الرعد43,إبراهيم52,الحجر99,النحل128,الإسراء111,الكهف110,مريم98,طه135,الأنبياء112,الحج78,المؤمنون118,النور64,الفرقان77,الشعراء227,النمل93,القصص88,العنكبوت69,الروم60,لقمان34,السجدة30,الأحزاب73,سبأ54,فاطر45,يس83,الصافات182,ص88,الزمر75,غافر85,فصلت54,الشورى53,الزخرف89,الدخان59,الجاثية37,الأحقاف35,محمد38,الفتح29,الحجرات18,ق45,الذاريات60,الطور49,النجم62,القمر55,الرحمن78,الواقعة96,الحديد29,المجادلة22,الحشر24,الممتحنة13,الصف14,الجمعة11,المنافقون11,التغابن18,الطلاق12,التحريم12,الملك30,القلم52,الحاقة52,المعارج44,نوح28,الجن28,المزمل20,المدثر56,القيامة40,الإنسان31,المرسلات50,النبأ40,النازعات46,عبس42,التكوير29,الانفطار19,المطففين36,الانشقاق25,البروج22,الطارق17,الأعلى19,الغاشية26,الفجر30,البلد20,الشمس15,الليل21,الضحى11,الشرح8,التين8,العلق19,القدر5,البينة8,الزلزلة8,العاديات11,القارعة11,التكاثر8,العصر3,الهمزة9,الفيل5,قريش4,الماعون7,الكوثر3,الكافرون6,النصر3,المسد5,الإخلاص4,الفلق5,الناس6".split(",").map(s=>{const m=s.match(/^(\D+)(\d+)$/);return[m[1],+m[2]]});
+const TXT={1:["بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ","ٱلْحَمْدُ لِلَّهِ رَبِّ ٱلْعَٰلَمِينَ","ٱلرَّحْمَٰنِ ٱلرَّحِيمِ","مَٰلِكِ يَوْمِ ٱلدِّينِ","إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ","ٱهْدِنَا ٱلصِّرَٰطَ ٱلْمُسْتَقِيمَ","صِرَٰطَ ٱلَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ ٱلْمَغْضُوبِ عَلَيْهِمْ وَلَا ٱلضَّآلِّينَ"],
+112:["قُلْ هُوَ ٱللَّهُ أَحَدٌ","ٱللَّهُ ٱلصَّمَدُ","لَمْ يَلِدْ وَلَمْ يُولَدْ","وَلَمْ يَكُن لَّهُۥ كُفُوًا أَحَدٌۢ"],
+113:["قُلْ أَعُوذُ بِرَبِّ ٱلْفَلَقِ","مِن شَرِّ مَا خَلَقَ","وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ","وَمِن شَرِّ ٱلنَّفَّٰثَٰتِ فِى ٱلْعُقَدِ","وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ"],
+114:["قُلْ أَعُوذُ بِرَبِّ ٱلنَّاسِ","مَلِكِ ٱلنَّاسِ","إِلَٰهِ ٱلنَّاسِ","مِن شَرِّ ٱلْوَسْوَاسِ ٱلْخَنَّاسِ","ٱلَّذِى يُوَسْوِسُ فِى صُدُورِ ٱلنَّاسِ","مِنَ ٱلْجِنَّةِ وَٱلنَّاسِ"]};
+const ar=n=>String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]);
+function quran(f=""){
+ $("#slist").innerHTML=SU.map((s,i)=>[i+1,...s]).filter(s=>s[1].includes(f.trim())).map(s=>TXT[s[0]]?`<button data-s="${s[0]}">${ar(s[0])}. ${s[1]}<em>${ar(s[2])} آية</em></button>`:`<a href="https://quran.com/${s[0]}" target="_blank" rel="noopener">${ar(s[0])}. ${s[1]}<em>${ar(s[2])} آية</em></a>`).join("");
+ $$("#slist button").forEach(b=>b.onclick=()=>{const n=b.dataset.s;$("#qread").innerHTML=`<div class="card q"><div style="font-size:1.3rem;color:var(--ac)">سورة ${SU[n-1][0]}</div>${TXT[n].map((v,i)=>v+` <i>﴿${ar(i+1)}﴾</i>`).join(" ")}</div>`;window.scrollTo(0,0)});
+}
+$("#qs").oninput=e=>quran(e.target.value);
+$$("nav button").forEach(b=>b.onclick=()=>{$$("nav button,section").forEach(x=>x.classList.remove("on"));b.classList.add("on");$("#v-"+b.dataset.v).classList.add("on")});
+$("#sAd").checked=S.ad;$("#sSnd").checked=S.snd;$("#sSal").value=[0,5,10,15,30,60,120].includes(S.sal)?S.sal:0;$("#sCus").value=S.sal||"";
+$("#sAd").onchange=e=>{S.ad=e.target.checked;save()};$("#sSnd").onchange=e=>{S.snd=e.target.checked;save()};
+$("#sSal").onchange=e=>{S.sal=+e.target.value;$("#sCus").value=S.sal||"";lastSal=Date.now();save()};
+$("#sCus").onchange=e=>{S.sal=Math.max(0,Math.min(1440,+e.target.value||0));lastSal=Date.now();save()};
+$("#perm").onclick=async()=>{if(!("Notification"in window)){alert("المتصفح لا يدعم الإشعارات");return}const r=await Notification.requestPermission();$("#perm").textContent=r==="granted"?"الإشعارات مفعّلة ✓":"الإشعارات غير مسموحة"};
+$("#tst").onclick=()=>notify("تجربة التنبيه","اللهم صلِّ وسلِّم على نبينا محمد");
+/* ===== المدن والـGPS ===== */
+const C={
+"مصر":[19.5,17.5,0,["القاهرة",30.04,31.24,"Africa/Cairo"],["الإسكندرية",31.2,29.92,"Africa/Cairo"],["الجيزة",30.01,31.21,"Africa/Cairo"],["المنصورة",31.04,31.38,"Africa/Cairo"],["طنطا",30.79,31,"Africa/Cairo"],["بورسعيد",31.27,32.3,"Africa/Cairo"],["السويس",29.97,32.55,"Africa/Cairo"],["أسيوط",27.18,31.18,"Africa/Cairo"],["الأقصر",25.69,32.64,"Africa/Cairo"],["أسوان",24.09,32.9,"Africa/Cairo"],["شرم الشيخ",27.91,34.33,"Africa/Cairo"]],
+"السعودية":[18.5,0,90,["مكة المكرمة",21.42,39.83,"Asia/Riyadh"],["المدينة المنورة",24.47,39.61,"Asia/Riyadh"],["الرياض",24.71,46.68,"Asia/Riyadh"],["جدة",21.54,39.17,"Asia/Riyadh"],["الدمام",26.43,50.1,"Asia/Riyadh"]],
+"الإمارات":[18.2,18.2,0,["دبي",25.2,55.27,"Asia/Dubai"],["أبوظبي",24.45,54.38,"Asia/Dubai"]],
+"الكويت":[18,17.5,0,["مدينة الكويت",29.38,47.99,"Asia/Kuwait"]],
+"قطر":[18,0,90,["الدوحة",25.29,51.53,"Asia/Qatar"]],
+"الأردن":[18,17,0,["عمّان",31.95,35.93,"Asia/Amman"]],
+"فلسطين":[18,17,0,["القدس",31.77,35.22,"Asia/Jerusalem"],["غزة",31.5,34.47,"Asia/Gaza"]],
+"لبنان":[18,17,0,["بيروت",33.89,35.5,"Asia/Beirut"]],
+"سوريا":[18,17,0,["دمشق",33.51,36.29,"Asia/Damascus"]],
+"العراق":[18,17,0,["بغداد",33.31,44.37,"Asia/Baghdad"]],
+"اليمن":[18,17,0,["صنعاء",15.37,44.19,"Asia/Aden"]],
+"السودان":[19.5,17.5,0,["الخرطوم",15.5,32.56,"Africa/Khartoum"]],
+"ليبيا":[18,17,0,["طرابلس",32.89,13.19,"Africa/Tripoli"]],
+"تونس":[18,18,0,["تونس",36.81,10.18,"Africa/Tunis"]],
+"الجزائر":[18,17,0,["الجزائر العاصمة",36.75,3.06,"Africa/Algiers"]],
+"المغرب":[19,17,0,["الرباط",34.02,-6.84,"Africa/Casablanca"],["الدار البيضاء",33.57,-7.59,"Africa/Casablanca"]],
+"تركيا":[18,17,0,["إسطنبول",41.01,28.98,"Europe/Istanbul"],["أنقرة",39.93,32.86,"Europe/Istanbul"]],
+"باكستان":[18,18,0,["كراتشي",24.86,67.01,"Asia/Karachi"],["لاهور",31.55,74.34,"Asia/Karachi"]],
+"إندونيسيا":[20,18,0,["جاكرتا",-6.21,106.85,"Asia/Jakarta"]],
+"ماليزيا":[20,18,0,["كوالالمبور",3.14,101.69,"Asia/Kuala_Lumpur"]],
+"بريطانيا":[18,17,0,["لندن",51.51,-0.13,"Europe/London"]],
+"ألمانيا":[18,17,0,["برلين",52.52,13.4,"Europe/Berlin"]],
+"فرنسا":[12,12,0,["باريس",48.86,2.35,"Europe/Paris"]],
+"أمريكا":[15,15,0,["نيويورك",40.71,-74.01,"America/New_York"],["لوس أنجلوس",34.05,-118.24,"America/Los_Angeles"]],
+"كندا":[15,15,0,["تورنتو",43.65,-79.38,"America/Toronto"]]};
+const cty=$("#cty"),cit=$("#cit");
+cty.innerHTML=Object.keys(C).map(k=>`<option>${k}</option>`).join("");
+const fillC=()=>{cit.innerHTML=C[cty.value].slice(3).map(c=>`<option>${c[0]}</option>`).join("")};
+function pick(co,ci){const c=C[co];S.co=co;S.f=c[0];S.i=c[1];S.im=c[2];const x=c.slice(3).find(z=>z[0]===ci)||c[3];S.ci=x[0];S.lat=x[1];S.lng=x[2];S.tz=x[3];S.city=co+" – "+x[0];S.gps=0;save();render();qib()}
+cty.value=C[S.co]?S.co:"مصر";fillC();if(S.gps){cit.value=S.ci}else{cit.value=S.ci||cit.value;pick(cty.value,cit.value)}
+cty.onchange=()=>{fillC();$("#gps").textContent="";pick(cty.value,cit.value)};
+cit.onchange=()=>{$("#gps").textContent="";pick(cty.value,cit.value)};
+function gps(){return new Promise(res=>{
+ if(!navigator.geolocation){alert("المتصفح لا يدعم تحديد الموقع");return res(0)}
+ $("#gps").textContent="جارٍ تحديد موقعك…";
+ navigator.geolocation.getCurrentPosition(p=>{
+  const la=p.coords.latitude,lo=p.coords.longitude;let b=null,bd=1e9;
+  for(const k in C)C[k].slice(3).forEach(c=>{const d=Math.hypot(c[1]-la,(c[2]-lo)*cos(la));if(d<bd){bd=d;b=[k,c]}});
+  const c=C[b[0]];S.lat=la;S.lng=lo;S.gps=1;S.co=b[0];S.ci=b[1][0];S.f=c[0];S.i=c[1];S.im=c[2];
+  S.tz=(Intl.DateTimeFormat().resolvedOptions().timeZone)||b[1][3];
+  S.city="موقعك (GPS) – قرب "+b[1][0];
+  $("#gps").textContent=la.toFixed(3)+"، "+lo.toFixed(3);cty.value=b[0];fillC();cit.value=b[1][0];
+  save();render();qib();res(1)},
+ ()=>{$("#gps").textContent="";alert("افتح الـ GPS من إعدادات الهاتف واسمح للمتصفح بالوصول للموقع، ثم حاول مرة أخرى.");res(0)},{enableHighAccuracy:true,timeout:15000});
+})}
+function applyPos(la,lo){
+ let b=null,bd=1e9;
+ for(const k in C)C[k].slice(3).forEach(c=>{const d=Math.hypot(c[1]-la,(c[2]-lo)*cos(la));if(d<bd){bd=d;b=[k,c]}});
+ const c=C[b[0]];S.lat=la;S.lng=lo;S.gps=1;S.co=b[0];S.ci=b[1][0];S.f=c[0];S.i=c[1];S.im=c[2];
+ S.tz=(Intl.DateTimeFormat().resolvedOptions().timeZone)||b[1][3];
+ S.city="موقعك – قرب "+b[1][0];
+ $("#gps").textContent=la.toFixed(3)+"، "+lo.toFixed(3);cty.value=b[0];fillC();cit.value=b[1][0];
+ save();render();qib();
+}
+gps=function(){return new Promise(res=>{
+ const st=$("#gps");
+ if(!navigator.geolocation){st.textContent="المتصفح لا يدعم GPS";$("#man").style.display="block";return res(0)}
+ st.textContent="جارٍ تحديد موقعك…";
+ const ok=p=>{applyPos(p.coords.latitude,p.coords.longitude);res(1)};
+ const bad=e=>{
+  st.textContent=e.code===1?"تم رفض إذن الموقع"+(window.self!==window.top?" (الصفحة داخل إطار والمتصفح يمنع الموقع — افتحها في المتصفح مباشرة أو استخدم التطبيق)":" — فعّل إذن الموقع للمتصفح من الإعدادات"):e.code===3?"انتهت المهلة، جرّب في مكان مفتوح":"الموقع غير متاح، افتح الـ GPS من إعدادات الهاتف";
+  $("#man").style.display="block";res(0)};
+ navigator.geolocation.getCurrentPosition(ok,e=>{if(e.code===2||e.code===3)navigator.geolocation.getCurrentPosition(ok,bad,{enableHighAccuracy:true,timeout:20000});else bad(e)},{enableHighAccuracy:false,timeout:10000,maximumAge:6e5});
+})};
+$("#loc").onclick=gps;
+$("#mok").onclick=()=>{const la=parseFloat($("#mla").value),lo=parseFloat($("#mlo").value);if(isNaN(la)||isNaN(lo)||Math.abs(la)>90||Math.abs(lo)>180){alert("إحداثيات غير صحيحة");return}applyPos(la,lo)};
+/* ===== البوصلة ===== */
+let cmpOn=0;
+async function startCmp(){
+ if(!S.gps&&!(await gps()))return;
+ try{if(window.DeviceOrientationEvent&&DeviceOrientationEvent.requestPermission&&await DeviceOrientationEvent.requestPermission()!=="granted"){alert("اسمح بالوصول لمستشعر الحركة");return}}catch(e){}
+ if(cmpOn)return;cmpOn=1;
+ const h=e=>{let v=null;
+  if(e.webkitCompassHeading!=null)v=e.webkitCompassHeading;
+  else if(e.absolute&&e.alpha!=null)v=360-e.alpha;
+  if(v==null)return;
+  v=(v+((screen.orientation&&screen.orientation.angle)||0)+360)%360;
+  heading=(heading+(((v-heading)%360+540)%360-180)*.25+360)%360;qib();
+  const df=Math.abs(((qibla()-heading)%360+540)%360-180);
+  $("#hd").textContent=df<5?"✓ أنت متجه نحو القبلة":"اتجاه هاتفك: "+Math.round(heading)+"°";
+ };
+ window.addEventListener("deviceorientationabsolute",h,true);
+ window.addEventListener("deviceorientation",h,true);
+}
+$("#cmp").onclick=startCmp;
+$("nav [data-v=qibla]").addEventListener("click",()=>{if(!cmpOn&&!S.gps)startCmp()});
+/* ===== تنبيه باهتزاز ===== */
+const _n=notify;notify=function(t,b){try{navigator.vibrate&&navigator.vibrate([300,100,300])}catch(e){}_n(t,b)};
+/* ===== المصحف ===== */
+const getQM=()=>window.QM&&typeof window.QM.getSurah==="function"?window.QM:null;
+quran=function(f=""){
+ const L=SU.map((s,i)=>[i+1,...s]).filter(s=>s[1].includes(f.trim()));
+ $("#slist").innerHTML=L.map(s=>`<button data-s="${s[0]}">${ar(s[0])}. ${s[1]}<em>${ar(s[2])} آية</em></button>`).join("");
+ $$("#slist button").forEach(b=>b.onclick=()=>openS(+b.dataset.s));
+};
+function openS(n){
+ let ay=null;
+ const Q=getQM();if(!Q&&!TXT[n]&&!window.QERR){$("#qread").innerHTML='<div class="card">جارٍ تحميل المصحف…</div>';window.addEventListener("quran-ready",()=>openS(n),{once:true});return}
+ try{if(Q){const r=Q.getSurah(n);ay=r.ayat||r.ayahs||r.verses||(Q.getAyahRange&&Q.getAyahRange(n,1,SU[n-1][1]).ayat)||null}}catch(e){}
+ if(!ay&&TXT[n])ay=TXT[n].map(t=>({text:t}));
+ const el=$("#qread");
+ if(!ay){el.innerHTML=`<div class="card">تعذّر تحميل نص المصحف، تأكد من اتصال الإنترنت ثم أعد المحاولة. <a href="https://quran.com/${n}" target="_blank" rel="noopener">افتحها على quran.com</a></div>`;return}
+ el.innerHTML=`<div class="card q"><div style="font-size:1.3rem;color:var(--ac)">سورة ${SU[n-1][0]}</div>${n!==1&&n!==9?'<div>بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>':""}`+ay.map((a,i)=>`${a.text||a} <a href="https://quran.com/${n}:${i+1}/tafsirs" target="_blank" rel="noopener" title="تفسير الآية">﴿${ar(i+1)}﴾</a>`).join(" ")+`</div><p style="text-align:center;color:var(--mu);font-size:.85rem">اضغط على رقم أي آية لفتح تفسيرها.</p>`;
+ window.scrollTo(0,0);
+}
+/* ===== الأذكار بالأدلة ===== */
+const AK="ٱللَّهُ لَآ إِلَٰهَ إِلَّا هُوَ ٱلْحَىُّ ٱلْقَيُّومُ ۚ لَا تَأْخُذُهُۥ سِنَةٌ وَلَا نَوْمٌ ۚ لَّهُۥ مَا فِى ٱلسَّمَٰوَٰتِ وَمَا فِى ٱلْأَرْضِ ۗ مَن ذَا ٱلَّذِى يَشْفَعُ عِندَهُۥٓ إِلَّا بِإِذْنِهِۦ ۚ يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ ۖ وَلَا يُحِيطُونَ بِشَىْءٍ مِّنْ عِلْمِهِۦٓ إِلَّا بِمَا شَآءَ ۚ وَسِعَ كُرْسِيُّهُ ٱلسَّمَٰوَٰتِ وَٱلْأَرْضَ ۖ وَلَا يَـُٔودُهُۥ حِفْظُهُمَا ۚ وَهُوَ ٱلْعَلِىُّ ٱلْعَظِيمُ";
+const AZ2={
+"الصباح والمساء":[
+[AK,1,"«من قرأها حين يصبح أُجير من الجن حتى يمسي، ومن قرأها حين يمسي أُجير حتى يصبح» — رواه الحاكم وصححه الألباني."],
+["قُلْ هُوَ اللَّهُ أَحَدٌ، وَالْمُعَوِّذَتَانِ (الفلق والناس)",3,"«تقولها حين تمسي وحين تصبح ثلاث مرات تكفيك من كل شيء» — رواه أبو داود والترمذي، وحسّنه الألباني."],
+["أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ (وفي المساء: أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ…)",1,"كان النبي ﷺ يقول ذلك إذا أصبح وإذا أمسى — رواه مسلم."],
+["اللَّهُمَّ أَنْتَ رَبِّي لَا إِلَهَ إِلَّا أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوءُ بِذَنْبِي فَاغْفِرْ لِي فَإِنَّهُ لَا يَغْفِرُ الذُّنُوبَ إِلَّا أَنْتَ (سيد الاستغفار)",1,"«من قالها موقنًا بها فمات من يومه أو ليلته دخل الجنة» — رواه البخاري."],
+["رَضِيتُ بِاللَّهِ رَبًّا، وَبِالْإِسْلَامِ دِينًا، وَبِمُحَمَّدٍ ﷺ نَبِيًّا",3,"«كان حقًّا على الله أن يرضيه يوم القيامة» — رواه أحمد وأبو داود والترمذي، وحسّنه الألباني."],
+["بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الْأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",3,"«لم يضرّه شيء» — رواه أبو داود والترمذي، وصححه الألباني."],
+["أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ (في المساء)",3,"«من قالها حين يمسي ثلاث مرات لم تضرّه حُمَةٌ تلك الليلة» — رواه أحمد والترمذي، وحسّنه الألباني."],
+["سُبْحَانَ اللَّهِ وَبِحَمْدِهِ",100,"«لم يأتِ أحد يوم القيامة بأفضل مما جاء به إلا أحد قال مثل ما قال أو زاد عليه» — رواه مسلم."],
+["لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ",100,"«من قالها في يوم مائة مرة كانت له عدل عشر رقاب، وكُتبت له مائة حسنة، ومُحيت عنه مائة سيئة، وكانت له حرزًا من الشيطان يومه ذلك حتى يمسي» — متفق عليه."]],
+"بعد الصلاة":[
+["أَسْتَغْفِرُ اللَّهَ (ثلاثًا) ثم: اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ، تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ",1,"كان ﷺ إذا انصرف من صلاته استغفر ثلاثًا وقال ذلك — رواه مسلم."],
+[AK,1,"«من قرأها دبر كل صلاة مكتوبة لم يمنعه من دخول الجنة إلا أن يموت» — رواه النسائي في الكبرى، وصححه الألباني."],
+["سُبْحَانَ اللَّهِ",33,"«من سبّح الله دبر كل صلاة ثلاثًا وثلاثين، وحمد الله ثلاثًا وثلاثين، وكبّر الله ثلاثًا وثلاثين، فتلك تسعة وتسعون» — رواه مسلم."],
+["الْحَمْدُ لِلَّهِ",33,"من الحديث السابق — رواه مسلم."],
+["اللَّهُ أَكْبَرُ",33,"من الحديث السابق — رواه مسلم."],
+["لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ (تمام المائة)",1,"«غُفرت خطاياه وإن كانت مثل زبد البحر» — رواه مسلم."],
+["قراءة الإخلاص والفلق والناس",1,"أمر النبي ﷺ عقبة بن عامر أن يقرأ المعوذات دبر كل صلاة — رواه أبو داود والنسائي، وصححه الألباني."]],
+"النوم والاستيقاظ":[
+["جمع الكفين ثم النفث فيهما وقراءة الإخلاص والمعوذتين، ثم المسح بهما على ما استطاع من الجسد",3,"كان النبي ﷺ يفعل ذلك كل ليلة إذا أوى إلى فراشه — رواه البخاري."],
+[AK,1,"«لن يزال عليك من الله حافظ، ولا يقربنّك شيطان حتى تصبح» — رواه البخاري."],
+["قراءة آخر آيتين من سورة البقرة (من «آمَنَ الرَّسُولُ…» إلى آخر السورة)",1,"«من قرأ بالآيتين من آخر سورة البقرة في ليلة كفتاه» — متفق عليه."],
+["بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا",1,"كان النبي ﷺ يقول ذلك إذا أخذ مضجعه — رواه البخاري."],
+["سُبْحَانَ اللَّهِ (٣٣) ، الْحَمْدُ لِلَّهِ (٣٣) ، اللَّهُ أَكْبَرُ (٣٤)",1,"قاله ﷺ لعلي وفاطمة: «خير لكما من خادم» — متفق عليه."],
+["الْحَمْدُ لِلَّهِ الَّذِي أَحْيَانَا بَعْدَ مَا أَمَاتَنَا وَإِلَيْهِ النُّشُورُ (عند الاستيقاظ)",1,"كان النبي ﷺ يقول ذلك إذا استيقظ — رواه البخاري."]],
+"أذكار متفرقة":[
+["بِسْمِ اللَّهِ، تَوَكَّلْتُ عَلَى اللَّهِ، وَلَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ (عند الخروج من المنزل)",1,"«يقال له: هُديتَ وكُفيتَ ووُقيتَ» — رواه أبو داود والترمذي، وصححه الألباني."],
+["بِسْمِ اللَّهِ (قبل الطعام)، فإن نسي: بِسْمِ اللَّهِ أَوَّلَهُ وَآخِرَهُ",1,"رواه أبو داود والترمذي، وصححه الألباني."],
+["الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنِي هَذَا وَرَزَقَنِيهِ مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ (بعد الطعام)",1,"«غُفر له ما تقدّم من ذنبه» — رواه أبو داود والترمذي، وحسّنه الألباني."],
+["اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ (دخول المسجد) / اللَّهُمَّ إِنِّي أَسْأَلُكَ مِنْ فَضْلِكَ (الخروج منه)",1,"رواه مسلم."],
+["سُبْحَانَكَ اللَّهُمَّ وَبِحَمْدِكَ، أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا أَنْتَ، أَسْتَغْفِرُكَ وَأَتُوبُ إِلَيْكَ (كفارة المجلس)",1,"رواه أبو داود والترمذي، وصححه الألباني."],
+["سُبْحَانَ اللَّهِ وَبِحَمْدِهِ، سُبْحَانَ اللَّهِ الْعَظِيمِ",10,"«كلمتان خفيفتان على اللسان، ثقيلتان في الميزان، حبيبتان إلى الرحمن» — متفق عليه."],
+["لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ",10,"«كنز من كنوز الجنة» — متفق عليه."],
+["أَسْتَغْفِرُ اللَّهَ وَأَتُوبُ إِلَيْهِ",10,"«والله إني لأستغفر الله وأتوب إليه في اليوم أكثر من سبعين مرة» — رواه البخاري."]],
+"الصلاة على النبي ﷺ":[
+["اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَى نَبِيِّنَا مُحَمَّدٍ",10,"«من صلى عليّ صلاة واحدة صلى الله عليه بها عشرًا» — رواه مسلم."],
+["اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ، اللَّهُمَّ بَارِكْ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ، كَمَا بَارَكْتَ عَلَى إِبْرَاهِيمَ وَعَلَى آلِ إِبْرَاهِيمَ، إِنَّكَ حَمِيدٌ مَجِيدٌ",1,"الصلاة الإبراهيمية التي علّمها النبي ﷺ أصحابه — متفق عليه."],
+["اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَى سَيِّدِنَا مُحَمَّدٍ (أكثِر منها يوم الجمعة)",10,"«أكثروا من الصلاة عليّ يوم الجمعة» — رواه أبو داود، وصححه الألباني."]]
+};
+cat=Object.keys(AZ2)[0];
+adhkar=function(){
+ $("#atabs").innerHTML=Object.keys(AZ2).map(k=>`<button class="${k===cat?"on":""}" data-c="${k}">${k}</button>`).join("");
+ $$("#atabs button").forEach(b=>b.onclick=()=>{cat=b.dataset.c;adhkar()});
+ $("#alist").innerHTML=AZ2[cat].map(z=>`<div class="card"><div class="az">${z[0]}</div><div class="src">📖 ${z[2]}</div><div class="cnt"><span>التكرار: ${z[1]}</span><button class="btn">${z[1]}</button></div></div>`).join("");
+ $$("#alist .btn").forEach(b=>b.onclick=()=>{let n=+b.textContent;if(n>0){n--;b.textContent=n;if(!n){b.textContent="✓";b.disabled=true}}});
+};
+/* ===== الأربعين النووية ===== */
+const H=[
+[1,"عَنْ أَمِيرِ الْمُؤْمِنِينَ عُمَرَ بْنِ الْخَطَّابِ رَضِيَ اللَّهُ عَنْهُ قَالَ: سَمِعْتُ رَسُولَ اللَّهِ ﷺ يَقُولُ: «إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى، فَمَنْ كَانَتْ هِجْرَتُهُ إِلَى اللَّهِ وَرَسُولِهِ فَهِجْرَتُهُ إِلَى اللَّهِ وَرَسُولِهِ، وَمَنْ كَانَتْ هِجْرَتُهُ لِدُنْيَا يُصِيبُهَا أَوِ امْرَأَةٍ يَنْكِحُهَا فَهِجْرَتُهُ إِلَى مَا هَاجَرَ إِلَيْهِ»","رواه البخاري ومسلم"],
+[3,"عَنْ عَبْدِ اللَّهِ بْنِ عُمَرَ رَضِيَ اللَّهُ عَنْهُمَا قَالَ: قَالَ رَسُولُ اللَّهِ ﷺ: «بُنِيَ الْإِسْلَامُ عَلَى خَمْسٍ: شَهَادَةِ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَنَّ مُحَمَّدًا رَسُولُ اللَّهِ، وَإِقَامِ الصَّلَاةِ، وَإِيتَاءِ الزَّكَاةِ، وَحَجِّ الْبَيْتِ، وَصَوْمِ رَمَضَانَ»","رواه البخاري ومسلم"],
+[5,"عَنْ أُمِّ الْمُؤْمِنِينَ عَائِشَةَ رَضِيَ اللَّهُ عَنْهَا قَالَتْ: قَالَ رَسُولُ اللَّهِ ﷺ: «مَنْ أَحْدَثَ فِي أَمْرِنَا هَذَا مَا لَيْسَ مِنْهُ فَهُوَ رَدٌّ»","رواه البخاري ومسلم"],
+[7,"عَنْ تَمِيمٍ الدَّارِيِّ رَضِيَ اللَّهُ عَنْهُ أَنَّ النَّبِيَّ ﷺ قَالَ: «الدِّينُ النَّصِيحَةُ». قُلْنَا: لِمَنْ؟ قَالَ: «لِلَّهِ وَلِكِتَابِهِ وَلِرَسُولِهِ وَلِأَئِمَّةِ الْمُسْلِمِينَ وَعَامَّتِهِمْ»","رواه مسلم"],
+[12,"عَنْ أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ قَالَ: قَالَ رَسُولُ اللَّهِ ﷺ: «مِنْ حُسْنِ إِسْلَامِ الْمَرْءِ تَرْكُهُ مَا لَا يَعْنِيهِ»","حديث حسن، رواه الترمذي وغيره"],
+[13,"عَنْ أَنَسٍ رَضِيَ اللَّهُ عَنْهُ عَنِ النَّبِيِّ ﷺ قَالَ: «لَا يُؤْمِنُ أَحَدُكُمْ حَتَّى يُحِبَّ لِأَخِيهِ مَا يُحِبُّ لِنَفْسِهِ»","رواه البخاري ومسلم"],
+[15,"عَنْ أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ أَنَّ رَسُولَ اللَّهِ ﷺ قَالَ: «مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ، وَمَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيُكْرِمْ جَارَهُ، وَمَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيُكْرِمْ ضَيْفَهُ»","رواه البخاري ومسلم"],
+[16,"عَنْ أَبِي هُرَيْرَةَ رَضِيَ اللَّهُ عَنْهُ أَنَّ رَجُلًا قَالَ لِلنَّبِيِّ ﷺ: أَوْصِنِي. قَالَ: «لَا تَغْضَبْ». فَرَدَّدَ مِرَارًا، قَالَ: «لَا تَغْضَبْ»","رواه البخاري"],
+[18,"عَنْ أَبِي ذَرٍّ وَمُعَاذِ بْنِ جَبَلٍ رَضِيَ اللَّهُ عَنْهُمَا عَنْ رَسُولِ اللَّهِ ﷺ قَالَ: «اتَّقِ اللَّهَ حَيْثُمَا كُنْتَ، وَأَتْبِعِ السَّيِّئَةَ الْحَسَنَةَ تَمْحُهَا، وَخَالِقِ النَّاسَ بِخُلُقٍ حَسَنٍ»","رواه الترمذي وقال: حديث حسن"],
+[20,"عَنْ أَبِي مَسْعُودٍ رَضِيَ اللَّهُ عَنْهُ قَالَ: قَالَ رَسُولُ اللَّهِ ﷺ: «إِنَّ مِمَّا أَدْرَكَ النَّاسُ مِنْ كَلَامِ النُّبُوَّةِ الْأُولَى: إِذَا لَمْ تَسْتَحِ فَافْعَلْ مَا شِئْتَ»","رواه البخاري"],
+[21,"عَنْ أَبِي عَمْرٍو سُفْيَانَ بْنِ عَبْدِ اللَّهِ رَضِيَ اللَّهُ عَنْهُ قَالَ: قُلْتُ: يَا رَسُولَ اللَّهِ، قُلْ لِي فِي الْإِسْلَامِ قَوْلًا لَا أَسْأَلُ عَنْهُ أَحَدًا غَيْرَكَ. قَالَ: «قُلْ: آمَنْتُ بِاللَّهِ، ثُمَّ اسْتَقِمْ»","رواه مسلم"]];
+$("#hl").innerHTML=H.map(h=>`<div class="card"><b style="color:var(--ac)">الحديث ${ar(h[0])}</b><div class="az">${h[1]}</div><div class="src">📖 ${h[2]}</div></div>`).join("")+`<p class="src">هذه مختارات من الأحاديث الأربعين، وليست الكتاب كاملًا.</p>`;
+{const s=document.createElement("p");s.className="src";
+ s.textContent=!("Notification"in window)?"⚠️ هذا المتصفح لا يدعم إشعارات النظام، فالتنبيه سيظهر داخل الصفحة مع صوت واهتزاز فقط.":window.self!==window.top?"⚠️ الصفحة داخل إطار، والمتصفح قد يمنع إشعارات النظام. افتحها في المتصفح مباشرة، أو استخدم نسخة التطبيق للإشعارات والتطبيق مقفول.":"";
+ $("#perm").parentNode.after(s)}
+render();adhkar();quran();qib();tick();
+</script>
+<script>
+(function(){
+if(!(window.Capacitor&&Capacitor.isNativePlatform&&Capacitor.isNativePlatform()))return;
+const LN=Capacitor.Plugins.LocalNotifications;if(!LN)return;
+const ios=Capacitor.getPlatform()==="ios";
+let t=null;
+async function sched(){
+ try{
+  let p=await LN.checkPermissions();
+  if(p.display!=="granted"){p=await LN.requestPermissions();if(p.display!=="granted")return}
+  const pend=await LN.getPending();
+  if(pend.notifications.length)await LN.cancel({notifications:pend.notifications.map(n=>({id:n.id}))});
+  const now=Date.now(),list=[];let id=1;
+  if(S.ad)for(let k=0;k<(ios?2:7);k++)calc(now+k*864e5).forEach(x=>{if(x[2]&&x[1]&&x[1].getTime()>now)list.push({id:id++,title:"حان الآن موعد صلاة "+x[0],body:"حيّ على الصلاة",schedule:{at:x[1],allowWhileIdle:true}})});
+  if(S.sal>0){const max=ios?Math.max(0,60-list.length):300;for(let i=1;i<=max;i++)list.push({id:1000+i,title:"صلِّ على النبي ﷺ",body:"اللهم صلِّ وسلِّم وبارك على سيدنا محمد",schedule:{at:new Date(now+i*S.sal*6e4),allowWhileIdle:true}})}
+  if(list.length)await LN.schedule({notifications:list});
+ }catch(e){console.error(e)}
+}
+const later=()=>{clearTimeout(t);t=setTimeout(sched,600)};
+notify=function(a,b){const el=$("#toast");el.textContent=a+" — "+b;el.style.display="block";setTimeout(()=>el.style.display="none",8000)};
+$("#perm").onclick=async()=>{const r=await LN.requestPermissions();$("#perm").textContent=r.display==="granted"?"الإشعارات مفعّلة ✓":"الإشعارات غير مسموحة";later()};
+document.addEventListener("change",later);
+$("#loc").addEventListener("click",()=>setTimeout(later,15000));
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)later()});
+later();
+})();
+</script>
+
+</body>
+</html>
